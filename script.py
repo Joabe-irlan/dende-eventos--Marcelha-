@@ -2,31 +2,31 @@ class statistics:
 
     def __init__(self, dataset):
         if not isinstance(dataset, dict):
-            raise typeError ("o dataset deve ser um, dicionário")
+            raise TypeError ("o dataset deve ser um dicionário")
             if len (dataset) == 0 :
-                raise valueError ("dataset vazio")
+                raise ValueError ("dataset vazio")
 
                 tamanhos =[]
                 for coluna, valores in dataset.items():
                     if not isisntance (valores, list)
-            raise typeError (f"a coluna '{coluna}' deve ser uma lista!")
+            raise TypeError (f"a coluna '{coluna}' deve ser uma lista!")
             tamanhos.append(len(valores))
 
 
             if len(set(tamanhos)) != 1:
-                raise valueError ("todas as colunas tem que possuir o mesmo número de linhas!")
+                raise ValueError ("todas as colunas tem que possuir o mesmo número de linhas!")
             for coluna, valores in dataset.items():
                 tipos = set (type(v) for v in valores if v is not None)
 
 
                 if len(tipos) > 1:
-                    raise typeError(f"a coluna '{coluna}' possui tipos misturados!")
+                    raise TypeError(f"a coluna '{coluna}' possui tipos misturados!")
                     self.dataset = dataset
                     self.columns = list(dataset.keys())
 
      def _check_column(self, column) :
         if column not in self.dataset:
-            raise keyError (f" a coluna '{column}' não existe ")
+            raise KeyError (f" a coluna '{column}' não existe ")
 
      def _clean(self, column):
         """remove valores None"""
@@ -38,17 +38,18 @@ class statistics:
         if len (valores) == 0:
 
             return False
-            return isisntance(valores[0], (int, float))
+            return isinstance(valores[0], (int, float))
 
      def _requise_numeric (self, column): 
         if not self._is_numeric(self, column):
-            raise typeError (f"a coluna '{column}' não é numérica!")    
+            raise TypeError (f"a coluna '{column}' não é numérica!")    
 
      def count (self, column):
         return len(self._clean(column))
 
      def  unique(self, column): 
-        valores = self._clean(column) unicos = []
+        valores = self._clean(column)
+        unicos = []
         for v in valores:
             if v not in unicos:
                 unicos.append(v)  
@@ -130,17 +131,17 @@ class statistics:
             return ordenado
 
 
-    from statistics import Statistics
-    dataset = {
-"popularity" : [50, 60, 70, 80, 90, 20, 90, 20],
-"genre" : ["pop", "trap", "reggae", "funk", "gospel", "funk", "reggae", "pop"],
-"energy" : [0.5, 0.6, 0.7, 0.8, 0.9, 0.2, 0.55, 0.95]
- } 
+     from statistics import Statistics
+     dataset = {
+     "popularity" : [50, 60, 70, 80, 90, 20, 90, 20],
+     "genre" : ["pop", "trap", "reggae", "funk", "gospel", "funk", "reggae", "pop"],
+     "energy" : [0.5, 0.6, 0.7, 0.8, 0.9, 0.2, 0.55, 0.95]
+    } 
 
       stats = Statistics(dataset)
       print("media popularity:", stats.mean ("popularity"))
       print ("mediana popularity:", stats.median("popularity"))
-      print("moda genre:", stats.model ("genre"))
+      print("moda genre:", stats.modas ("genre"))
       print ("variância energy:", stats.variance("energy"))
       print("desvio padrão energy:", stats.std("energy"))
-    print("frequência genre:", stats.frequency_table("genre"))
+      print("frequência genre:", stats.frequency_table("genre"))
