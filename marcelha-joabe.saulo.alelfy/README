@@ -32,21 +32,16 @@ Este projeto representa o **Módulo Core** (regras de negócio e backend simulad
 
 ## 🎯 Objetivo do Projeto
 
-Implementar um sistema robusto dividido em três grandes pilares lógicos (User Stories), contendo as seguintes funcionalidades:
+-- No primeiro desafio, vocês implementaram um gerenciador de eventos operado exclusivamente via console (sem interface gráfica) e utilizando a linguagem Kotlin. A implementação não deveria usar funções ou métodos externos ao fluxo principal do programa, seguindo uma lógica linear. Os dados deveriam ser mantidos apenas em memória, ou seja, não teríamos persistência em banco de dados. Vocês puderam utilizar de data classes e enums para estruturar melhor os dados, mas vocês não poderiam utilizar funções.
 
-- **Módulo de Autenticação e Perfis (US 01 a 06):** - Cadastro, login e edição de Usuários Comuns.
-  - Cadastro de Organizadores (com suporte para Pessoa Física e validação de Pessoa Jurídica via CNPJ).
-  - Cálculo dinâmico de idade, inativação e reativação de contas com bloqueio de segurança.
-  
-- **Módulo de Gestão de Eventos (US 07 a 10):** - Criação de eventos com validação de datas no futuro e capacidade máxima.
-  - Listagem, edição de regras e cancelamento de eventos por parte do organizador responsável.
-  
-- **Módulo de Experiência do Cliente (US 11 a 14):** - Feed de eventos interativo listando apenas eventos ativos e com vagas disponíveis.
-  - Lógica transacional para compra de ingressos (ocupação de vagas) e histórico do usuário.
+Neste segundo desafio, nós vamos trabalhar com uma refatoração do código. Vocês podem continuar a desenvolver o código no repositório atual. Nós temos algumas propostas de desenvolvimento. Nos itens a seguir, nós vamos apresentar os itens a serem refatorados.
 
+1. Cada User Story deve se tornar uma função: Vocês devem criar uma função kotlin para cada User Story definida no código. No total, nós teremos 15 funções. Nomeie as funções com o nome das User Stories.
+2. Separe as funções por classes: Vocês devem agrupar as funções relacionadas ao mesmo conceito em arquivos separados, por exemplo, vamos considerar as Users Stories de 1 a 7 que são relacionadas ao usuário, essas funções devem ser adicionadas num arquivo chamado Usuario.kt.
+3. Crie um arquivo Model.kt: Vocês devem colocar todos os data classes e enums criados em um só arquivo chamado Model.kt.
 ---
 
-## 🧑‍🤝‍🧑 Identificação da Equipe  
+## 🧑‍🤝‍🧑 Identificação da Equipe
 
 ### Nome do Grupo: Equipe Marcelha
 
